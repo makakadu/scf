@@ -1,0 +1,59 @@
+[33mcommit 53b3b4afb8d36ba439ef01201fcd26e1bffcaedc[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Fri Aug 7 13:52:31 2020 +0300
+
+    Added real theme type switching, now useDarkMode hook doesn't need. App component gets theme object from separate file, state of theme object depends on themeIsDark variable. Modified 'change avatar' button. Added countries flags. Fixed  ADD_DIALOGUE_TO_LIST null text and null timestamp. Added updating of dialogue in dialogue list after send message in existing dialogue. Added auto focus on new message field. Fixed uk translation for 'Select image'
+
+[33mcommit f484851c48f4c2f5c1a17cbb01d7a538b5ce765d[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Thu Aug 6 23:38:26 2020 +0300
+
+    Added attach file in Message. Added border around avatar. Added 'edit avatar' button beside avatar. Day container(in Dialog) now is not transparent. Edit avatar button is showing if is own profile. Created TooltipWithTheme that changes color when theme type is changing. TooltipWithTheme added to NewMessage component. Tooltip in mobile version is shown on touch, in desktop on click. Reduced message form padding. Refactored emoji picker in NewPostForm. Changed primary and secondary color, they are same for dark and light theme. Link 'to dialogues' in dialogue header now has normal color. Modified edit avatar button. Removed outilne from EmojiPicker container. Theme type(dark or light) is taking from state.
+
+[33mcommit 92e78262cecb160087da267af8a3e211c5150c45[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Wed Aug 5 20:08:31 2020 +0300
+
+    Message creation time visible ever in xs and sm widths. Year of message creation is visible when currentYear !== messageYear. Fixed Message component: Tooltip is visible if !isMobile. Fixed message and creation time displaying. Added sorting in DialoguesList. Timestamp of message reduced to 10 numbers. Added setting common error to createDialogue thunk if response code is not 201.
+
+[33mcommit da64e20c52f731e0509a665db576ec0ed1948e02[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Tue Aug 4 22:03:23 2020 +0300
+
+    Changed Avatar background color. Fixed items skeletons in Info component, info item is showing after is loaded. Overrided textTransform to none in theme. Created new component EmojiPicker which is a wrapper for emoji mart. EmojiPicker closes on escape button press. Added emojis(EmojiPicker) to NewMessageForm. EmojiPicker replaced Picker in ProfileChronic.
+
+[33mcommit dae7cd7ed91eccb2cd7fa2a77eb70546d1855f2a[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Tue Aug 4 13:55:40 2020 +0300
+
+    replaced empty tranlates on __NOT_TRANSLATED__, added some translates. Added text cropping to left navigation if text doesn't fit. Добавлено подстраивание диалога под высоту окна для medium и выше(md, lg, xl)
+
+[33mcommit d4fda9a35c0933cae392b1523a20066d83f75f05[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Mon Aug 3 11:06:39 2020 +0300
+
+    Added i18next-scanner config that extract keys in i18next t() function, which exist in code and are not yet in translation.json files, and sets default value: __NOT_TRANSLATED__ opposite such keys. In i18next t() passed only strings, not variables
+
+[33mcommit 737f3b1712aa2d424cbb6b3a993ddf1a791a2066[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Sun Aug 2 21:21:41 2020 +0300
+
+    installed i18next-scanner
+
+[33mcommit d6be01d913c23044fd8eff43d3aaf421df21252b[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Sun Aug 2 19:52:27 2020 +0300
+
+    added public/images to gitignore, added some translations, moved InputProps from StatusForm, NewMessageForm and NewPostForm to TextArea in FormControls
+
+[33mcommit 320fc14a17e0d98692ad3d526133d22bcdda4e2c[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Sun Aug 2 00:35:05 2020 +0300
+
+    added many files from old project, modified ProfileHeader and it child components, info in Info components is real
+
+[33mcommit 066c29ad9dbd8ad33bb7080e5d433b49d3c0ae78[m
+Author: Aleksey <aleksey.potapenko1992@gmail.com>
+Date:   Tue Jul 28 17:23:31 2020 +0300
+
+    Initialize project using Create React App

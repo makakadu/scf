@@ -1,0 +1,43 @@
+#user_brief_info {
+    --line-height: 1.8em;
+    --padding-left: 1.6em;
+}
+
+/*#toggle_detailed_info {
+    padding: 0px;
+    cursor: pointer;
+}
+
+#toggle_detailed_info:hover {
+    background: #444444;
+}
+
+#show_or_hide_detailed_info {
+    --margin-left: 8.8em;
+    display: inline-block;
+    text-align: left;
+}
+
+#detailed_info_list {
+    --margin-top: 0.5em;
+}*/
+
+#brief_info_section_name {
+    --border-bottom: none;
+}
+
+.info_row {
+    display: flex;
+    align-items: center;
+    --margin: 0 0 0.5em 0;
+    --border: 1px solid white;
+}
+
+.info_row:last-child {
+    --margin: 0;
+}
+
+.info_name {
+    --margin-right: 3px;
+    --border: 1px solid white;
+}

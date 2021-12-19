@@ -1,0 +1,1 @@
+export let monthNames = [{number: 1, name: 'Января'}, {number: 2, name: 'Февраля'}, {number: 3, name: 'Марта'}, {number: 4, name: 'Апреля'}, {number: 5, name: 'Мая'}, {number: 6, name: 'Июня'}, {number: 7, name: 'Июля'}, {number: 8, name: 'Августа'}, {number: 9, name: 'Сентября'}, {number: 10, name: 'Октября'}, {number: 11, name: 'Ноября'}, {number: 12, name: 'Декабря'}]

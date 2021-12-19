@@ -1,0 +1,131 @@
+  useEffect(() => {
+    onScrollOrResize.current = () => {
+      const headerHeight = 44
+
+      const panelStyles = panel.current.style
+
+      if (panelStyles.position === '') panelStyles.position = relative
+
+      let panelBounds = panel.current.getBoundingClientRect()
+      let panelHeight = panelBounds.height
+
+      let panelContainerBounds = panelContainer.current.getBoundingClientRect()
+      let panelContainerTop = panelContainerBounds.top
+
+      let windowHeightWithoutHeaderAndBottom = window.innerHeight - 54 - 30
+
+      //let panelBottom = -((panelHeight + panelTop) - window.innerHeight)
+      let panelLongestThanWindow = (panelHeight + 55) > window.innerHeight // 335 - это размер от самого верха окна до начала хроники когда страница не прокручена ни на один пиксель 
+      let wallBounds = wall.current.getBoundingClientRect()
+      let wallLongestThanDiv = wallBounds.height > panelBounds.height
+     
+      // panelContainerBottomToWindowBottom - это расстояние дна контейнера до дна окна. Дно контейнера, на самом деле, находится намного выше, если панель fixed, потому что тогда контейнер становится скукоженым
+      // поэтому я добавляю к длине скукоженого контейнера длину панели, если контейнер скукожен.
+      // Контейнер, в отличии от панели, двигается при каждой прокрутке, тогда как панель прокручивается всегда.
+      let panelContainerBottomToWindowBottom = window.innerHeight - (panelContainerTop + panelHeight)
+      
+      // if (currentPosition.current === bottomFixed && (panelContainerBottomToWindowBottom <= 30)) {
+      //   console.log(1)
+      //   setPosition(panel, currentPosition, relative, relative, '', '')
+      // }
+
+      // if(panelHeight > windowHeightWithoutHeaderAndBottom && panelContainerBottomToWindowBottom >= 25 && currentPosition.current !== bottomFixed && wallLongestThanDiv) {
+      //   console.log(2)
+      //   setPosition(panel, currentPosition, fixed, bottomFixed, '', '30px')
+      // }
+
+      // if(panelHeight < windowHeightWithoutHeaderAndBottom && currentPosition.current !== topFixed && panelContainerTop < 54) {
+      //   console.log(3)
+      //   setPosition(panel, currentPosition, fixed, topFixed, '54px', '')
+      // }
+
+      // if(currentPosition.current === topFixed && panelContainerTop >= 54) {
+      //   console.log(4)
+      //   setPosition(panel, currentPosition, relative, relative, '', '')
+      // }
+
+      // // Если панель зафиксирована сверху и панель занимает длиннее, чем windowHeightWithoutHeaderAndBottom, то открепляем, потому что закреплять сверху панель нужно только когда панель короче
+      // if(currentPosition.current === topFixed && panelHeight > windowHeightWithoutHeaderAndBottom) {
+      //   console.log(5)
+      //   setPosition(panel, currentPosition, relative, relative, '', '')
+      // }
+      //let topFixedPanelBottom = 54 + panelHeight
+
+      // if(currentPosition.current === topFixed && topFixedPanelBottom > wallBounds.bottom) {
+      //   console.log(6)
+      //   setPosition(panel, currentPosition, fixed, bottomFixed, '', '30px')
+      // }
+
+      // if(wallLongestThanDiv && !panelLongestThanWindow && currentPosition.current !== topFixed && panelContainerTop < 50) {
+      //   setPosition(panel, currentPosition, fixed, topFixed, '50px', '')
+      // }
+    }
+    onWindowScrollCallbacks[3] = onScrollOrResize.current
+    return () => delete onWindowScrollCallbacks[3]
+  }, [])
+
+  useEffect(() => {
+    onWindowResizeCallbacks[1] = () => {
+      if (innerHeight.current !== window.innerHeight) {
+        onScrollOrResize.current()
+      }
+      innerHeight.current = window.innerHeight
+    }
+    return () => delete onWindowResizeCallbacks[1]
+  }, [])
+
+  useEffect(() => {
+    windowWidth.current = width
+    if (panelContainer.current) { // Если я не ошибаюсь, то это сделано для того, чтобы onScrollResize.current() выполнился только когда divContainer уже создан
+      
+      let panelContainerStyles = panelContainer.current.style
+      let panelStyles = panel.current.style
+      console.log(panelStyles)
+      //      if(props.width === 'xs') {// || props.width === 'sm') {
+      //         panelContainerStyles.display = 'none'
+      //      } else {
+      //         panelContainerStyles.display = 'block'
+      //      }
+      onScrollOrResize.current()
+    }
+  }, [width])
+  
+
+  const setPosition = (element, currentPosition, htmlPosition, positionName, top, bottom) => {
+    let elementStyles = element.current.style
+    currentPosition.current = positionName
+    elementStyles.position = htmlPosition
+    elementStyles.bottom = bottom
+    elementStyles.top = top
+  }
+
+
+// Из профиля. Нужно для отображения хедера или мини хедера
+          {/*<ProfilePicture />
+
+            <div
+              style={{
+                position: 'relative',
+                height: 65,
+                display: showMiniHeader ? 'flex' : 'none',
+                alignItems: 'center',
+                marginLeft: 20,
+              }}
+            >
+              <Avatar style={{marginRight: 10,}} sx={{width: 56, height: 56}} src="https://bipbap.ru/wp-content/uploads/2019/05/86ae0b2400c92d333751c8d9a9ae68e4.png" />
+              <Typography variant='h5'>Лолик Кекович</Typography>
+            </div>
+
+            <div
+              id='mini-header'
+              style={{
+                position: 'relative',
+                height: 65,
+                display: showMiniHeader ? 'none' : 'flex',
+                alignItems: 'center',
+                marginLeft: 20
+              }}
+            >
+              <Button>Добавить в друзья </Button>
+              <Button variant='h6'> Покакать кусочками</Button>
+            </div>*/}

@@ -1,0 +1,32 @@
+#welcome_to_dialog {
+    text-align: center;
+    height: 627px;
+    font-size: 20px;
+    line-height: 1.5em;
+    border-radius: 5px;
+    --border: 1px solid white;
+    
+}
+
+#welcome_to_dialog div {
+    margin-top: 150px;
+}
+#dialogs {
+    border: 1px solid white;
+    --grid-template-columns: 200px auto;
+    display: flex;
+    --flex-direction: column-reverse;
+    word-break: break-all;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+#dia {
+    display: inline-block;
+}
+
+#dialogs_list {
+    --border: 1px solid black;
+    --min-width: 200px;
+    --display: inline-block;
+}
